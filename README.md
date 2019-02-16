@@ -9,6 +9,16 @@
 
 
 
+## How to build
+
+```bash
+git clone --depth 1 https://github.com/kitakar5525/arch-kernel-linux-rc50-surface
+cd arch-kernel-linux-surface
+makepkg -sC
+```
+
+
+
 ## Issues for 5.0-rc
 
 ### IPTS is not working
