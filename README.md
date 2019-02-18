@@ -27,12 +27,27 @@ makepkg -sC
 
 ### IPTS is not working
 
-```bash
-Feb 12 09:34:39 localhost kernel: [drm:intel_guc_send_mmio [i915]] *ERROR* MMIO: GuC action 0x10 failed with error -5 0xf000f000
-Feb 12 09:34:39 localhost kernel: [drm:intel_ipts_init [i915]] *ERROR* i915_guc_ipts_submission_enable failed : -5
+```
+kern  :info  : [Mon Feb 18 20:32:38 2019] i915 0000:00:02.0: GuC firmware version 9.33
+kern  :info  : [Mon Feb 18 20:32:38 2019] i915 0000:00:02.0: GuC submission enabled
+kern  :info  : [Mon Feb 18 20:32:38 2019] i915 0000:00:02.0: HuC enabled
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:gen8_init_common_ring [i915]] Applied 5 rcs0 workarounds
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:gen9_init_render_ring [i915]] Applied 4 whitelist workarounds
+kern  :info  : [Mon Feb 18 20:32:38 2019] ipts: initializing ipts
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:guc_client_alloc [i915]] client 2 (high prio=no) reserved doorbell: 1
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:guc_client_alloc [i915]] reserved cacheline 0x80, next 0xc0, linesize 64
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:guc_client_alloc [i915]] new priority 3 client 00000000c7fb370a for engine(s) 0x47: stage_id 2
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:guc_client_alloc [i915]] doorbell id 1, cacheline offset 0x80
+kern  :err   : [Mon Feb 18 20:32:38 2019] [drm:intel_guc_send_mmio [i915]] *ERROR* MMIO: GuC action 0x10 failed with error -5 0xf000f000
+kern  :debug : [Mon Feb 18 20:32:38 2019] [drm:create_doorbell [i915]] Couldn't create client 2 doorbell: -5
+kern  :err   : [Mon Feb 18 20:32:38 2019] [drm:intel_ipts_init [i915]] *ERROR* i915_guc_ipts_submission_enable failed : -5
+kern  :info  : [Mon Feb 18 20:32:38 2019] [drm] Initialized i915 1.6.0 20181204 for 0000:00:02.0 on minor 0
 
-Feb 12 09:34:40 localhost kernel: ipts mei::3e8d0870-271a-4208-8eb5-9acb9402ae04:0F: open gpu error : -5
-Feb 12 09:34:40 localhost kernel: ipts mei::3e8d0870-271a-4208-8eb5-9acb9402ae04:0F: error in handling resp msg
+kern  :info  : [Mon Feb 18 20:32:39 2019] IPTS ipts_mei_cl_init() is called
+kern  :info  : [Mon Feb 18 20:32:39 2019] probing Intel Precise Touch & Stylus
+kern  :info  : [Mon Feb 18 20:32:39 2019] IPTS using DMA_BIT_MASK(64)
+kern  :err   : [Mon Feb 18 20:32:39 2019] ipts mei::3e8d0870-271a-4208-8eb5-9acb9402ae04:0F: open gpu error : -5
+kern  :err   : [Mon Feb 18 20:32:39 2019] ipts mei::3e8d0870-271a-4208-8eb5-9acb9402ae04:0F: error in handling resp msg
 ```
 
 
