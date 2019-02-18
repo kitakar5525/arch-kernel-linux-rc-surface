@@ -1,3 +1,6 @@
+From
+- [[1/1] ipu3-cio2: Allow probe to succeed if there are no sensors connected - Patchwork](https://patchwork.kernel.org/patch/10714257/)
+
 The device won't be powered off on systems that have no sensors connected
 unless it has a driver bound to it. Allow that to happen even if there are
 no sensors connected to cio2.
