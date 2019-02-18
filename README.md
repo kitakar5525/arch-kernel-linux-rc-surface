@@ -50,5 +50,8 @@ Feb 12 09:34:40 localhost kernel: ipts mei::3e8d0870-271a-4208-8eb5-9acb9402ae04
 
 ## Changelog
 
-2019-02-16
+2019-02-18 5.0.0-rc6-2-rc50-surface
+- [updating 4.19 patches · jakeday/linux-surface@2f1570d](https://github.com/jakeday/linux-surface/commit/2f1570d509eb7de8330ad4bc01b725c501ab9a8c)
+
+2019-02-16 5.0.0-rc6-1-rc50-surface
 -  jakeday patchset: [updating 4.19 patches · jakeday/linux-surface@5b7dd5a](https://github.com/jakeday/linux-surface/commit/5b7dd5a7a9967c34f04c7108f5c7fbe326e261e2)
