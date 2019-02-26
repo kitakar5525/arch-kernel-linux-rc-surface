@@ -69,6 +69,12 @@ kern  :err   : [Mon Feb 18 20:32:39 2019] ipts mei::3e8d0870-271a-4208-8eb5-9acb
 - [updating 4.19 patches and config · jakeday/linux-surface@5d21cc8](https://github.com/jakeday/linux-surface/commit/5d21cc824c9b41e65f92fdebcbcccd2181b9393f)
 - 5.0-rc8: [The Linux Kernel Archives](https://www.kernel.org/)
 
+Merged into jakeday repository:
+- prevent-nvme-from-entering-D3.patch
+- nvme-add-quirk-to-not-call-disable-function-when-suspending-for-powersaving.patch
+- v3-platform-x86-surface3_power-MSHW0011-rev-eng-implementation.patch
+- mwifiex-disable-dump-and-reset.patch
+
 2019-02-18 5.0.0-rc7-1-rc50-surface
 - 5.0-rc7, [The Linux Kernel Archives](https://www.kernel.org/)
 
