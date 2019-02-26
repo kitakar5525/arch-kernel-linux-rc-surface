@@ -1,7 +1,7 @@
-From 33749f6c2bd576b6a1933526a848997b232f87a5 Mon Sep 17 00:00:00 2001
+From 006ac18711abf7cb0c89c4a22ec16937ccd1398e Mon Sep 17 00:00:00 2001
 From: "Hayataka@kitakar5525" <34676735+kitakar5525@users.noreply.github.com>
-Date: Sun, 17 Feb 2019 14:43:31 +0900
-Subject: [PATCH] ipts-50
+Date: Tue, 26 Feb 2019 13:54:07 +0900
+Subject: [PATCH] ipts-500
 
 ---
  drivers/gpu/drm/i915/Makefile               |    3 +
@@ -244,10 +244,10 @@ index 7e56c516c..d661b9db0 100644
  #define MEMBER(T, member, ...) T member;
  struct i915_params {
 diff --git a/drivers/gpu/drm/i915/intel_dp.c b/drivers/gpu/drm/i915/intel_dp.c
-index fdd2cbc56..11a3203cc 100644
+index 22a74608c..866afd18a 100644
 --- a/drivers/gpu/drm/i915/intel_dp.c
 +++ b/drivers/gpu/drm/i915/intel_dp.c
-@@ -2901,8 +2901,8 @@ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
+@@ -2903,8 +2903,8 @@ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
  		return;
  
  	if (mode != DRM_MODE_DPMS_ON) {
@@ -6170,5 +6170,5 @@ index 000000000..f329bbfb8
 +
 +#endif // INTEL_IPTS_IF_H
 -- 
-2.20.1
+2.21.0
 

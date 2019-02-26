@@ -65,6 +65,10 @@ kern  :err   : [Mon Feb 18 20:32:39 2019] ipts mei::3e8d0870-271a-4208-8eb5-9acb
 
 ## Changelog
 
+2019-02-26 5.0.0-rc8-1-rc50-surface
+- [updating 4.19 patches and config · jakeday/linux-surface@5d21cc8](https://github.com/jakeday/linux-surface/commit/5d21cc824c9b41e65f92fdebcbcccd2181b9393f)
+- 5.0-rc8: [The Linux Kernel Archives](https://www.kernel.org/)
+
 2019-02-18 5.0.0-rc7-1-rc50-surface
 - 5.0-rc7, [The Linux Kernel Archives](https://www.kernel.org/)
 
