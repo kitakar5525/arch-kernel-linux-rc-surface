@@ -1,14 +1,17 @@
-	# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-rc50-surface       # Build kernel with a different name
-_srcver=5.0-rc8
-pkgver=${_srcver//-/.}
+pkgbase=linux-rc-surface       # Build kernel with a different name
+_srcver=5.1-rc1
 pkgrel=1
+_patch_release_tag=1.2
+
+_patch_linux_ver=5.1rc
+pkgver=${_srcver//-/.}
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://www.kernel.org"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
@@ -22,61 +25,19 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  4416-00-jakeday-0003-buttons.patch
-  4416-00-jakeday-0004-cameras.patch
-  4416-00-jakeday-0007-sdcard-reader.patch
-  4416-00-jakeday-0008-wifi.patch
-  4416-00-jakeday-0009-surface3-power.patch
-  4416-00-jakeday-0010-surface-dock.patch
-  4416-00-jakeday-0011-mwlwifi.patch
-  4416-00-jakeday-5525-0001-surface_acpi-420.patch
-  4416-00-jakeday-5525-0002-suspend-500.patch
-  4416-00-jakeday-5525-0005-ipts-500.patch
-  4416-00-jakeday-5525-0006-hid-420.patch
-  4416-s0ix-01-ipu3-cio2-Allow-probe-to-succeed-if-there-are-no-sensors-connected-500.patch
-  4416-s0ix-02-5525-ICL-support-and-other-enhancements-for-PMC-Core-added-SB1.patch
-  5525-hid-add-Surface-3-JP-Type-Cover-and-Surface-Book-JP-.patch
-  5525-mwifiex-change-parameters-permission.patch
-  5525-sound-add-dmi-match-OEMB-for-affected-surface-3.patch
-  5526-debug-intel_pmc_core-debug-quirk_xtal_ignore.patch
-  5526-debug-ipts-add-module-params-for-debugging.patch
-  5527-modToJake-ipts-change-default-value-of-enable_guc-to-auto.patch
-  5529-gccWarn-ipts-remove-unused-variables.patch
-  5529-gccWarn-ipts-uncomment-downstream_hpd_needs_d0.patch
-  5529-gccWarn-mwlwifi-fix-gcc-warning.patch
+  kitakar5525-linux-surface-patches-v${_patch_release_tag}.tar.gz::https://github.com/kitakar5525/linux-surface-patches/archive/v${_patch_release_tag}.tar.gz # kitakar5525/linux-surface-patches
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  #'8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('SKIP' # tar.gz
+            'SKIP' # config
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'SKIP' # linux.preset
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            'SKIP' # kitakar5525/linux-surface-patches
 )
 
 _kernelname=${pkgbase#linux}
@@ -99,15 +60,28 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  # [5525] apply patches from kitakar5525/linux-surface-patches
+  patch_path="../linux-surface-patches-${_patch_release_tag}/patch-${_patch_linux_ver}/"
+  if [ ! -e $patch_path ]; then # let `makepkg` fail if path not exist
+    echo "$patch_path: No such file or directory"
+    return 1;
+  fi
+  for p in $(find $patch_path -name "*.patch" | sort); do
+    echo "applying $p"
+    patch -Np1 -i $p
+  done
+
   msg2 "Setting config..."
   cp ../config .config
+  # [5525] use `oldconfig` instead of `olddefconfig`
   #make olddefconfig
-  # 5525
   make oldconfig
+  # [5525] do `menuconfig` here if you want
   #make menuconfig
+  # [5525] copy newly generated kernel config to $src
   cp .config ../config_new
 
-  make kernelrelease > ../version
+  make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
