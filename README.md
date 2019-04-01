@@ -30,7 +30,7 @@ makepkg -sC
 ## Status
 
 Arch Linux linux version
-- 5.1-rc2: [The Linux Kernel Archives](https://www.kernel.org/)
+- 5.1-rc3: [The Linux Kernel Archives](https://www.kernel.org/)
 
 kitakar5525/linux-surface-patches version
-- [Release v1.2 · kitakar5525/linux-surface-patches](https://github.com/kitakar5525/linux-surface-patches/releases/tag/v1.2)
+- [Release v1.2.1 · kitakar5525/linux-surface-patches](https://github.com/kitakar5525/linux-surface-patches/releases/tag/v1.2.1)

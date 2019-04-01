@@ -4,9 +4,9 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rc-surface       # Build kernel with a different name
-_srcver=5.1-rc2
+_srcver=5.1-rc3
 pkgrel=1
-_patch_release_tag=1.2
+_patch_release_tag=1.2.1
 
 _patch_linux_ver=5.1rc
 pkgver=${_srcver//-/.}
