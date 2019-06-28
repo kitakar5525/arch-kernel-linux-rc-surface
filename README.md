@@ -22,3 +22,9 @@ git clone --depth 1 https://github.com/kitakar5525/arch-kernel-linux-rc-surface
 cd arch-kernel-linux-rc-surface
 makepkg -sC
 ```
+
+
+
+## IPTS patch
+
+Currently, ipts patch is broken. Boot with `i915.enable_ipts=0`.
