@@ -4,11 +4,11 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rc-surface       # Build kernel with a different name
-_srcver=5.1-rc7
+_srcver=5.2-rc6
 pkgrel=1
-_patch_release_tag=1.4.2 # release tag of kitakar5525/linux-surface-patches
+_patch_release_tag=2.0.1 # release tag of kitakar5525/linux-surface-patches
 
-_patch_linux_ver=5.1rc # patch directory name of kitakar5525/linux-surface-patches
+_patch_linux_ver=5.2rc # patch directory name of kitakar5525/linux-surface-patches
 pkgver=${_srcver//-/.}
 arch=(x86_64)
 url="https://www.kernel.org"
@@ -22,7 +22,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  kitakar5525-linux-surface-patches-v${_patch_release_tag}.tar.gz::https://github.com/kitakar5525/linux-surface-patches/archive/v${_patch_release_tag}.tar.gz # kitakar5525/linux-surface-patches
+  linux-surface-patches-2.0.1-testing.tar.gz
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -58,7 +58,7 @@ prepare() {
   done
 
   # [5525] apply patches from kitakar5525/linux-surface-patches
-  patch_path="../linux-surface-patches-${_patch_release_tag}/patch-${_patch_linux_ver}/"
+  patch_path="../linux-surface-patches-${_patch_release_tag}-testing/patch-${_patch_linux_ver}/"
   if [ ! -e $patch_path ]; then # let `makepkg` fail if path not exist
     echo "$patch_path: No such file or directory"
     return 1;
@@ -74,7 +74,7 @@ prepare() {
   #make olddefconfig
   make oldconfig
   # [5525] do `menuconfig` here if you want
-  #make menuconfig
+  # make menuconfig
   # [5525] copy newly generated kernel config to $src
   cp .config ../config_new
 
