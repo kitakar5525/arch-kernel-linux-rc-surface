@@ -1,6 +1,6 @@
 # linux-surface for Arch Linux latest rc kernel
 
-- Currently kernel config is based on Arch Linux linux kernel 5.1.y, ported to 5.2-rcx
+- Currently kernel config is based on Arch Linux linux kernel 5.2.y, ported to 5.3-rcx
 
 - Intended for **Surface Book 1 (especially, with Performance Base)** and **Surface 3**, but all patches (or equivalent) from [jakeday repository](https://github.com/jakeday/linux-surface) are applied
 
