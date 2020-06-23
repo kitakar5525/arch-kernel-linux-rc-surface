@@ -1,3 +1,5 @@
+I don't use this PKGBUILD anymore as linux-surface repo now provides builds for Arch. Take a look at [here](https://github.com/linux-surface/linux-surface/tree/master/pkg/arch) for linux-surface's PKGBUILD.
+
 # linux-surface for Arch Linux latest rc kernel
 
 - Currently kernel config is based on Arch Linux linux kernel 5.2.y, ported to 5.3-rcx
